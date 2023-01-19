@@ -6,12 +6,21 @@ from pyspark.sql.types import StringType
 
 from logger import Log4j
 
+# manipulation of column values using regular expression
+# def parse_gender(gender):
+#     female_pattern = r"^f$|f.m|w.m"
+#     male_pattern = r"^m$|ma|ml"
+#     if re.search(female_pattern, gender.lower()):
+#         return "Female"
+#     elif re.search(male_pattern, gender.lower()):
+#         return "Male"
+#     return "Unknown"
+
+# changing the column entries without regular expression
 def parse_gender(gender):
-    female_pattern = r"^f$|f.m|w.m"
-    male_pattern = r"^m$|ma|ml"
-    if re.search(female_pattern, gender.lower()):
+    if "female" == gender.lower() or "f" == gender.lower():
         return "Female"
-    elif re.search(male_pattern, gender.lower()):
+    elif "male" == gender.lower() or "m" == gender.lower():
         return "Male"
     return "Unknown"
 
